@@ -20,6 +20,8 @@ id_user = st.text_input('Entre ton id compris entre 0 et {}'.format(click.user_i
 request_params = {"user_id":id_user}
 
 # Send the request to the Azure function
+if request_params['user_id'] == "":
+    request_params = {"user_id":0}
 if request_params:
     r = requests.post(azure_url, params=request_params)
     
